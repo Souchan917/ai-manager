@@ -18,11 +18,7 @@ const Chat = () => {
     setIsTyping(true);
 
     try {
-      const API_URL = process.env.NODE_ENV === 'production' 
-        ? '/api/chat'
-        : 'http://localhost:3001/api/chat';
-        
-      const res = await axios.post(API_URL, { message });
+      const res = await axios.post('/api/chat', { message });
       const aiMessage = {
         sender: 'ai',
         text: res.data.choices[0].message.content,
